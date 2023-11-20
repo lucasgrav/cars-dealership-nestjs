@@ -9,8 +9,10 @@ import {
   ParseUUIDPipe,
 } from '@nestjs/common';
 import { CarsService } from './cars.service';
+import { CreateCarDto } from './dto/create-car.dto';
 
 @Controller('cars')
+// @UsePipes(ValidationPipe)
 export class CarsController {
   constructor(private readonly carsService: CarsService) {}
   @Get()
@@ -24,8 +26,8 @@ export class CarsController {
   }
 
   @Post()
-  createCar(@Body() body: any) {
-    return body;
+  createCar(@Body() car: CreateCarDto) {
+    return car;
   }
 
   @Patch(':id')
